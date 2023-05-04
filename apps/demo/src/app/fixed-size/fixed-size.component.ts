@@ -7,7 +7,7 @@ import {
   RxVirtualScrollViewportComponent,
 } from '@rx-angular/virtual-scrolling';
 
-import { DataService } from '../data.service';
+import { DataService, Item } from '../data.service';
 
 @Component({
   selector: 'fixed-size',
@@ -37,7 +37,8 @@ import { DataService } from '../data.service';
               let item of state.dataService.items;
               renderCallback: state.renderCallback$;
               viewCacheSize: state.viewCache;
-              strategy: demoPanel.strategyChange
+              strategy: demoPanel.strategyChange;
+              trackBy: trackItem
             "
           >
             <div>{{ item.id }}</div>
@@ -83,6 +84,10 @@ import { DataService } from '../data.service';
 })
 export class FixedSizeComponent {
   constructor(public state: DemoComponentState) {}
+
+  public trackItem(index: number, item: Item) {
+    return item.id;
+  }
 }
 
 import { NgModule } from '@angular/core';

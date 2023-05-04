@@ -80,4 +80,29 @@ export class DataService {
   }
 
   trackItem = (i: number, item: { id: number }) => item.id;
+
+  constructor() {
+    setTimeout(() => {
+      let value = [...this.items$.value];
+
+      console.log(value[3]);
+
+      value = value.map((it) => {
+        if (it.id === 3) {
+          return {
+            ...it,
+            content: 'test',
+          };
+        }
+
+        return it;
+      });
+
+      console.log(value[3]);
+
+      this.items$.next(value);
+
+      console.log('timeout');
+    }, 2000);
+  }
 }

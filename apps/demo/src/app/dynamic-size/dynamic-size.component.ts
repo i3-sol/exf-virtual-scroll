@@ -94,6 +94,10 @@ export class DynamicSizeComponent {
   itemSize = (item: Item) => (item.description ? 120 : 50);
 
   constructor(public state: DemoComponentState) {}
+
+  public trackItem(index: number, item: Item) {
+    return item.id;
+  }
 }
 
 import { NgModule } from '@angular/core';

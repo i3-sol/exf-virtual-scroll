@@ -8,7 +8,7 @@ import {
   RxVirtualScrollViewportComponent,
 } from '@rx-angular/virtual-scrolling';
 
-import { DataService } from '../data.service';
+import { DataService, Item } from '../data.service';
 
 @Component({
   selector: 'auto-size',
@@ -43,7 +43,8 @@ import { DataService } from '../data.service';
               let item of state.items$;
               viewCacheSize: state.viewCache;
               renderCallback: state.renderCallback$;
-              strategy: demoPanel.strategyChange
+              strategy: demoPanel.strategyChange;
+              trackBy: trackItem
             "
           >
             <div>{{ item.id }}</div>
@@ -84,6 +85,10 @@ import { DataService } from '../data.service';
 export class AutosizeComponent {
   stableScrollbar = true;
   constructor(public state: DemoComponentState) {}
+
+  public trackItem(index: number, item: Item) {
+    return item.id;
+  }
 }
 
 import { NgModule } from '@angular/core';

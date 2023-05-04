@@ -33,7 +33,7 @@
               "maximumError": "4kb"
             }
           ],
-          "baseHref": "https://hoebbelsb.github.io/rxa-virtual-scroll/",
+          "baseHref": "https://juanfran.github.io/rxa-virtual-scroll/",
           "outputHashing": "all",
           "fileReplacements": [
             {
